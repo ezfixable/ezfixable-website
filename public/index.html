@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>EZFixable — Appliance Repair in Woodland Hills | Call 323-388-1315</title>
+    <meta name="description" content="Same-day when possible. Washers, dryers, ovens, dishwashers, commercial pizza ovens, wall heaters/HVAC. Transparent pricing.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ezfixable.com/">
+    <meta property="og:title" content="EZFixable — Appliance Repair in Woodland Hills">
+    <meta property="og:description" content="Same-day when possible. Washers, dryers, ovens, dishwashers, commercial pizza ovens, wall heaters/HVAC. Transparent pricing.">
+    <meta property="og:image" content="https://customer-assets.emergentagent.com/job_ezfixable-landing/artifacts/1esvhsuc_photo_2025-09-11_23-07-46.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ezfixable.com/">
+    <meta property="twitter:title" content="EZFixable — Appliance Repair in Woodland Hills">
+    <meta property="twitter:description" content="Same-day when possible. Washers, dryers, ovens, dishwashers, commercial pizza ovens, wall heaters/HVAC. Transparent pricing.">
+    <meta property="twitter:image" content="https://customer-assets.emergentagent.com/job_ezfixable-landing/artifacts/1esvhsuc_photo_2025-09-11_23-07-46.jpg">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#1a365d',
+                        'orange': '#e67e22',
+                        'light-orange': '#f39c12'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "EZFixable",
+        "url": "https://ezfixable.com",
+        "@id": "https://ezfixable.com",
+        "telephone": "+13233881315",
+        "email": "ezfixable@gmail.com",
+        "priceRange": "$$",
+        "areaServed": [
+            "Woodland Hills, CA",
+            "Calabasas, CA", 
+            "Tarzana, CA",
+            "Reseda, CA",
+            "Encino, CA",
+            "Canoga Park, CA",
+            "Chatsworth, CA",
+            "Northridge, CA",
+            "Thousand Oaks, CA"
+        ],
+        "openingHours": "Mo-Fr 08:00-19:00",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Appliance Repair Services",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Washer Repair"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dryer Repair"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Oven Repair"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dishwasher Repair"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Commercial Oven Repair"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "HVAC Repair"}}
+            ]
+        }
+    }
+    </script>
+    
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #1a365d, #2d5aa0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .cta-gradient {
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+        }
+        .cta-gradient:hover {
+            background: linear-gradient(135deg, #d35400, #e67e22);
+        }
+        .sticky-bar {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+        }
+        .phone-pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .honeypot { display: none !important; }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
