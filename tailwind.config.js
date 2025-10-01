@@ -72,26 +72,3 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate")],
 }
-Commit new file
-🎯 ШАГ 8: Создание craco.config.js
-Действия в GitHub:
-Add file → Create new file
-Введите имя файла: craco.config.js
-Скопируйте и вставьте этот код:
-const path = require("path");
-
-module.exports = {
-  webpack: {
-    alias: {
-      "@": path.resolve(__dirname, "src"),
-    },
-  },
-  style: {
-    postcss: {
-      plugins: [
-        require('tailwindcss'),
-        require('autoprefixer'),
-      ],
-    },
-  },
-};
