@@ -1,20 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-Commit new file
-🎯 ШАГ 4: Создание src/index.css
-Действия в GitHub:
-Add file → Create new file
-Введите имя файла: src/index.css
-Скопируйте и вставьте этот код:
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -56,10 +39,3 @@ code {
   --ring: 222.2 84% 4.9%;
   --radius: 0.5rem;
 }
-Commit new file
-Готовы создавать папку public и остальные файлы? 🎯
-
-Sep 30, 11:43 PM
-
-Copy
-Agent is waiting...
