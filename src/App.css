@@ -1,615 +1,114 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Prevent horizontal scroll and ensure full width */
-html, body {
-  overflow-x: hidden;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-/* Container constraints */
-.max-w-7xl {
-  max-width: 80rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-@media (min-width: 640px) {
-  .max-w-7xl {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .max-w-7xl {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-/* Fix floating elements positioning */
-.floating-appliance {
-  position: absolute;
-  z-index: 1;
-  opacity: 0.1;
-  animation: float1 6s ease-in-out infinite;
-  max-width: 100px;
-  max-height: 200px;
-  overflow: hidden;
-}
-
-/* Fix parallax backgrounds */
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  opacity: 0.05;
-  z-index: 0;
-  overflow: hidden;
-}
-
-/* Constrain particle positions */
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(231, 126, 34, 0.5);
-  border-radius: 50%;
-  animation: particleFloat 8s linear infinite;
-  max-width: 4px;
-  max-height: 4px;
-}
-
-/* Fix section positioning */
-section {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-/* Responsive grid fixes */
-.grid {
-  width: 100%;
-}
-
-/* Image constraints */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Animated Logo */
-@keyframes logoFloat {
-  0%, 100% { 
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% { 
-    transform: translateY(-10px) rotate(2deg);
-  }
-}
-
-@keyframes logoPulse {
-  0%, 100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 10px rgba(231, 126, 34, 0.3));
-  }
-  50% {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 20px rgba(231, 126, 34, 0.6));
-  }
-}
-
-.logo-animated {
-  animation: logoFloat 4s ease-in-out infinite, logoPulse 2s ease-in-out infinite;
-  transition: all 0.3s ease;
-}
-
-.logo-animated:hover {
-  animation-play-state: paused;
-  transform: scale(1.1) rotate(5deg);
-  filter: drop-shadow(0 0 25px rgba(231, 126, 34, 0.8));
-}
-
-/* Hero Section with 3D depth */
-.hero-3d {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 40%, #cbd5e1 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-3d::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 20% 80%, rgba(231, 126, 34, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(26, 54, 93, 0.1) 0%, transparent 50%);
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-/* Floating elements animation */
-@keyframes float1 {
-  0%, 100% { transform: translateY(0px) translateX(0px); }
-  33% { transform: translateY(-20px) translateX(10px); }
-  66% { transform: translateY(-10px) translateX(-5px); }
-}
-
-@keyframes float2 {
-  0%, 100% { transform: translateY(0px) translateX(0px); }
-  50% { transform: translateY(-15px) translateX(-8px); }
-}
-
-.floating-appliance {
-  position: absolute;
-  z-index: 1;
-  opacity: 0.1;
-  animation: float1 6s ease-in-out infinite;
-}
-
-.floating-appliance:nth-child(2) {
-  animation: float2 8s ease-in-out infinite;
-  animation-delay: -2s;
-}
-
-/* Glass morphism cards */
-.glass-card {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-/* 3D Card effects */
-.card-3d {
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.card-3d:hover {
-  transform: translateY(-20px) rotateY(5deg) rotateX(5deg);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(231, 126, 34, 0.2);
-}
-
-.card-inner {
-  transform-style: preserve-3d;
-  transition: all 0.6s ease;
-}
-
-.card-3d:hover .card-inner {
-  transform: translateZ(20px);
-}
-
-/* Digital grid background */
-.digital-grid {
-  background-image: 
-    linear-gradient(rgba(231, 126, 34, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(231, 126, 34, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-}
-
-/* Neon glow effects */
-.neon-glow {
-  box-shadow: 
-    0 0 5px rgba(231, 126, 34, 0.5),
-    0 0 10px rgba(231, 126, 34, 0.3),
-    0 0 15px rgba(231, 126, 34, 0.2),
-    0 0 20px rgba(231, 126, 34, 0.1);
-}
-
-.neon-glow:hover {
-  box-shadow: 
-    0 0 10px rgba(231, 126, 34, 0.8),
-    0 0 20px rgba(231, 126, 34, 0.6),
-    0 0 30px rgba(231, 126, 34, 0.4),
-    0 0 40px rgba(231, 126, 34, 0.2);
-}
-
-/* Parallax background images */
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 120%;
-  height: 120%;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  transform: translateZ(-1px) scale(1.1);
-  opacity: 0.05;
-  z-index: 0;
-}
-
-/* Text shadow depth */
-.text-depth {
-  text-shadow: 
-    0 1px 0 rgba(0, 0, 0, 0.1),
-    0 2px 0 rgba(0, 0, 0, 0.08),
-    0 3px 0 rgba(0, 0, 0, 0.06),
-    0 4px 0 rgba(0, 0, 0, 0.04),
-    0 5px 10px rgba(0, 0, 0, 0.15);
-}
-
-/* Gradient text animation */
-.gradient-text {
-  background: linear-gradient(45deg, #1a365d, #e67e22, #1a365d);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradientShift 4s ease infinite;
-}
-
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* Holographic button effect */
-.holo-button {
-  background: linear-gradient(45deg, #e67e22, #f39c12, #e67e22);
-  background-size: 300% 300%;
-  animation: holoShine 3s ease infinite;
-  position: relative;
-  overflow: hidden;
-}
-
-.holo-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-  transition: all 0.5s;
-}
-
-.holo-button:hover::before {
-  left: 100%;
-}
-
-@keyframes holoShine {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* Floating particles */
-@keyframes particleFloat {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.1;
-  }
-  50% {
-    transform: translateY(-100px) rotate(180deg);
-    opacity: 0.3;
-  }
-}
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(231, 126, 34, 0.5);
-  border-radius: 50%;
-  animation: particleFloat 8s linear infinite;
-}
-
-.particle:nth-child(odd) {
-  animation-duration: 6s;
-  animation-delay: -2s;
-}
-
-.particle:nth-child(even) {
-  animation-duration: 10s;
-  animation-delay: -5s;
-}
-
-/* Sticky header with blur */
-.sticky-header {
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  background: rgba(255, 255, 255, 0.85);
-  border-bottom: 1px solid rgba(231, 126, 34, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-/* Section dividers with depth */
-.section-divider {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(231, 126, 34, 0.5), transparent);
-  position: relative;
-}
-
-.section-divider::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, rgba(231, 126, 34, 0.1), transparent);
-  filter: blur(2px);
-}
-
-/* Modern colorful backgrounds */
-.colorful-bg-1 {
-  background: linear-gradient(135deg, 
-    #f8fafc 0%, 
-    #e0f2fe 25%, 
-    #fff3e0 50%, 
-    #fce4ec 75%, 
-    #f3e5f5 100%);
-}
-
-.colorful-bg-2 {
-  background: linear-gradient(45deg, 
-    #fff8e1 0%, 
-    #e8f5e8 30%, 
-    #e1f5fe 60%, 
-    #fde7f3 100%);
-}
-
-.colorful-bg-3 {
-  background: radial-gradient(ellipse at center,
-    rgba(231, 126, 34, 0.05) 0%,
-    rgba(26, 54, 93, 0.05) 35%,
-    rgba(231, 126, 34, 0.03) 70%,
-    transparent 100%),
-  linear-gradient(135deg,
-    #fafafa 0%,
-    #f0f9ff 25%,
-    #fff7ed 50%,
-    #fef7f7 75%,
-    #faf5ff 100%);
-}
-
-/* Enhanced hero background */
-.hero-colorful {
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(231, 126, 34, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(26, 54, 93, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(231, 126, 34, 0.04) 0%, transparent 50%),
-    linear-gradient(135deg, #f8fafc 0%, #e0f2fe 30%, #fff3e0 70%, #f8fafc 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-colorful::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    linear-gradient(45deg, transparent 0%, rgba(231, 126, 34, 0.02) 50%, transparent 100%),
-    linear-gradient(-45deg, transparent 0%, rgba(26, 54, 93, 0.02) 50%, transparent 100%);
-  z-index: 1;
-}
-
-/* Services section colorful background */
-.services-colorful {
-  background: 
-    radial-gradient(circle at 70% 30%, rgba(231, 126, 34, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 30% 70%, rgba(26, 54, 93, 0.06) 0%, transparent 40%),
-    linear-gradient(135deg, #fafafa 0%, #f0f9ff 20%, #fff7ed 40%, #fef7f7 60%, #faf5ff 80%, #f8fafc 100%);
-}
-
-/* Benefits section */
-.benefits-colorful {
-  background: 
-    linear-gradient(45deg, #fff8e1 0%, #e8f5e8 25%, #e1f5fe 50%, #fde7f3 75%, #fff3e0 100%),
-    radial-gradient(circle at center, rgba(231, 126, 34, 0.03) 0%, transparent 70%);
-}
-
-/* Enhanced glass morphism with colors */
-.glass-card-colorful {
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.4) 0%, 
-    rgba(231, 126, 34, 0.05) 50%, 
-    rgba(255, 255, 255, 0.3) 100%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    0 0 0 1px rgba(231, 126, 34, 0.1);
-}
-
-.glass-card-colorful:hover {
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.5) 0%, 
-    rgba(231, 126, 34, 0.08) 50%, 
-    rgba(255, 255, 255, 0.4) 100%);
-  box-shadow: 
-    0 16px 50px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    0 0 0 2px rgba(231, 126, 34, 0.2);
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.scale-in {
-  animation: scaleIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Modern scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #e67e22, #f39c12);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #d35400, #e67e22);
-}
-
-/* Legacy styles for compatibility */
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.hero-gradient {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-}
-
-.text-gradient {
-    background: linear-gradient(135deg, #1a365d, #2d5aa0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.cta-gradient {
-    background: linear-gradient(135deg, #e67e22, #f39c12);
-}
-
-.cta-gradient:hover {
-    background: linear-gradient(135deg, #d35400, #e67e22);
-}
-
-.sticky-bar {
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.card-hover:hover {
-    transform: translateY(-4px);
-    transition: transform 0.3s ease;
-}
-
-.phone-pulse {
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { 
-        transform: scale(1); 
-    }
-    50% { 
-        transform: scale(1.05); 
-    }
-}
-
-.border-navy {
-    border-color: #1a365d;
-}
+import React, { useState } from "react";
+import "./App.css";
+
+function App() {
+  const [currentLang, setCurrentLang] = useState('en');
+
+  return (
+    <div className="App">
+      {/* Language Selector */}
+      <div className="fixed top-4 right-4 z-50 flex gap-2">
+        <button 
+          onClick={() => setCurrentLang('en')}
+          className={`px-3 py-1 rounded-full text-sm font-medium transition-all ${currentLang === 'en' ? 'bg-orange-500 text-white' : 'bg-white/20 text-gray-700 hover:bg-white/30'}`}
+        >
+          EN
+        </button>
+        <button 
+          onClick={() => setCurrentLang('ru')}
+          className={`px-3 py-1 rounded-full text-sm font-medium transition-all ${currentLang === 'ru' ? 'bg-orange-500 text-white' : 'bg-white/20 text-gray-700 hover:bg-white/30'}`}
+        >
+          RU
+        </button>
+        <button 
+          onClick={() => setCurrentLang('es')}
+          className={`px-3 py-1 rounded-full text-sm font-medium transition-all ${currentLang === 'es' ? 'bg-orange-500 text-white' : 'bg-white/20 text-gray-700 hover:bg-white/30'}`}
+        >
+          ES
+        </button>
+      </div>
+
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <span className="text-2xl font-bold text-gray-800">EZFixable</span>
+            </div>
+            
+            <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300">
+              {currentLang === 'en' && '📞 Call Now'}
+              {currentLang === 'ru' && '📞 Звонить'}
+              {currentLang === 'es' && '📞 Llamar'}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 pt-20">
+        <div className="max-w-7xl mx-auto px-6 py-20">
+          <div className="text-center">
+            {currentLang === 'en' && (
+              <h1 className="text-5xl lg:text-7xl font-black mb-8 leading-tight">
+                Appliance & Commercial Oven Repair
+              </h1>
+            )}
+            {currentLang === 'ru' && (
+              <h1 className="text-5xl lg:text-7xl font-black mb-8 leading-tight">
+                Ремонт бытовой техники и коммерческих печей
+              </h1>
+            )}
+            {currentLang === 'es' && (
+              <h1 className="text-5xl lg:text-7xl font-black mb-8 leading-tight">
+                Reparación de electrodomésticos y hornos comerciales
+              </h1>
+            )}
+            
+            {currentLang === 'en' && (
+              <p className="text-2xl text-gray-700 mb-12 font-medium">
+                Same-day when possible. Transparent pricing.<br/>
+                30-day labor / 90-day parts warranty.
+              </p>
+            )}
+            {currentLang === 'ru' && (
+              <p className="text-2xl text-gray-700 mb-12 font-medium">
+                Выезд в день обращения, когда возможно. Прозрачные цены.<br/>
+                30 дней на работу / 90 дней на запчасти гарантии.
+              </p>
+            )}
+            {currentLang === 'es' && (
+              <p className="text-2xl text-gray-700 mb-12 font-medium">
+                Mismo día cuando sea posible. Precios transparentes.<br/>
+                30 días de mano de obra / 90 días de garantía de piezas.
+              </p>
+            )}
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-2xl text-xl font-bold hover:shadow-2xl transition-all duration-300">
+                {currentLang === 'en' && '📞 Call Now'}
+                {currentLang === 'ru' && '📞 Звонить'}
+                {currentLang === 'es' && '📞 Llamar'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default App;
+🔍 КАК ПРОВЕРИТЬ:
+Скопируйте код выше
+Вставьте в GitHub App.js (заменить всё содержимое)
+Commit changes
+Идите в Vercel и смотрите логи
+Если успешно - сайт покажет базовую версию без "Woodland Hills"
+Пожалуйста, проверьте этот код и сообщите, если возникнут вопросы или потребуется дальнейшая помощь. Если этот код скомпилируется успешно, я помогу с дальнейшими шагами! 🎯
+
+Sep 30, 11:14 PM
+
+Copy
+Scroll to bottom
+Agent is waiting...
