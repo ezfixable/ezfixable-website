@@ -1,43 +1,69 @@
-{
-  "name": "frontend",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "clsx": "^2.1.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "tailwind-merge": "^3.2.0",
-    "tailwindcss-animate": "^1.0.7"
-  },
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@craco/craco": "^7.1.0",
-    "@eslint/js": "9.23.0",
-    "autoprefixer": "^10.4.20",
-    "eslint": "9.23.0",
-    "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-react": "7.37.4",
-    "globals": "15.15.0",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17"
-  },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
-}
+import React, { useState, useEffect } from "react";
+import "./App.css";
+
+function App() {
+  const [currentLang, setCurrentLang] = useState('en');
+  const [submitted, setSubmitted] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
+  const [quickForm, setQuickForm] = useState({
+    name: '',
+    phone: '',
+    appliance: ''
+  });
+  const [fullForm, setFullForm] = useState({
+    name: '',
+    phone: '',
+    address: '',
+    zip: '',
+    appliance: '',
+    time: '',
+    description: ''
+  });
+
+  const submitQuickForm = (e) => {
+    e.preventDefault();
+    
+    if (!quickForm.name || !quickForm.phone) {
+      alert('Please fill in name and phone');
+      return;
+    }
+    
+    // Create simple form element for submission
+    const form = document.createElement('form');
+    form.action = 'https://formsubmit.co/ezfixable@gmail.com';
+    form.method = 'POST';
+    form.target = '_blank';
+    
+    // Add all form data
+    const fields = {
+      name: quickForm.name,
+      phone: quickForm.phone,
+      appliance: quickForm.appliance,
+      _subject: 'New Quick Service Request - EZFixable',
+      _template: 'table',
+      _next: 'https://ezfixable.com'
+    };
+    
+    Object.keys(fields).forEach(key => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = fields[key];
+      form.appendChild(input);
+    });
+    
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+    
+    setSubmitted(true);
+    setQuickForm({ name: '', phone: '', appliance: '' });
+  };
+Это только начало файла, он довольно большой.
+
+Пожалуйста, проверьте и дайте знать, если ошибка сохранится. Я готов помочь дальше с исправлением или вы можете сообщить, какой способ предпочитаете: постепенно получить полный код, или сначала исправим синтаксис, а потом будем двигаться дальше.
+
+Sep 30, 10:53 PM
+
+Copy
+Agent is waiting...
