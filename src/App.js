@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   const [currentLang, setCurrentLang] = useState('en');
   const [submitted, setSubmitted] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
   const [quickForm, setQuickForm] = useState({
     name: '',
     phone: '',
@@ -136,10 +137,24 @@ function App() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
+              <div className="logo-container">
+                <img 
+                  src="https://customer-assets.emergentagent.com/ezfixable-logo.png" 
+                  alt="EZFixable" 
+                  className="h-12 w-auto logo-spin"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextElementSibling.style.display = 'block';
+                  }}
+                />
+                <div className="h-12 flex items-center px-4 bg-gradient-to-r from-blue-600 to-orange-500 text-white rounded-lg font-bold text-xl" style={{display: 'none'}}>
+                  EZFixable
+                </div>
+              </div>
               <span className="text-2xl font-bold text-gray-800">EZFixable</span>
             </div>
             
-            <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300">
+            <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 holographic-button">
               {currentLang === 'en' && '📞 Call Now'}
               {currentLang === 'ru' && '📞 Звонить'}
               {currentLang === 'es' && '📞 Llamar'}
@@ -191,15 +206,20 @@ function App() {
               )}
 
               <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
-                <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-2xl text-xl font-bold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-2xl text-xl font-bold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 holographic-button">
                   {currentLang === 'en' && '📞 Call Now'}
                   {currentLang === 'ru' && '📞 Звонить'}
                   {currentLang === 'es' && '📞 Llamar'}
                 </button>
-                <button className="bg-white/70 backdrop-blur-md border-2 border-gray-300 text-gray-800 px-8 py-4 rounded-2xl text-xl font-bold hover:bg-white/90 hover:shadow-xl transition-all duration-300">
+                <button className="bg-white/70 backdrop-blur-md border-2 border-gray-300 text-gray-800 px-8 py-4 rounded-2xl text-xl font-bold hover:bg-white/90 hover:shadow-xl transition-all duration-300 glass-card">
                   {currentLang === 'en' && '⚡ Request Service'}
                   {currentLang === 'ru' && '⚡ Заказать ремонт'}
                   {currentLang === 'es' && '⚡ Solicitar servicio'}
+                </button>
+                <button className="bg-white/70 backdrop-blur-md border-2 border-gray-300 text-gray-800 px-8 py-4 rounded-2xl text-xl font-bold hover:bg-white/90 hover:shadow-xl transition-all duration-300 glass-card">
+                  {currentLang === 'en' && '💬 Text Us'}
+                  {currentLang === 'ru' && '💬 Написать'}
+                  {currentLang === 'es' && '💬 Enviar mensaje'}
                 </button>
               </div>
             </div>
@@ -220,6 +240,40 @@ function App() {
                 </div>
               </div>
             </div>
+          </div>
+          
+          <div className="mt-16 flex flex-col sm:flex-row gap-8 justify-center items-center">
+            <a 
+              href="https://www.google.com/maps/place/EZFixable/@34.168971,-118.608165,17z/data=!4m6!3m5!1s0x0:0x123abc!8m2!3d34.168971!4d-118.608165!16s%2Fg%2F11c123abc"
+              target="_blank"
+              rel="noopener noreferrer" 
+              className="glass-card bg-white/70 backdrop-blur-md px-8 py-4 rounded-2xl border border-gray-200 hover:bg-white/90 hover:shadow-xl transition-all duration-300"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-2xl">⭐⭐⭐⭐⭐</span>
+                <span className="font-semibold text-gray-800">
+                  {currentLang === 'en' && 'Google Reviews'}
+                  {currentLang === 'ru' && 'Отзывы Google'}
+                  {currentLang === 'es' && 'Reseñas Google'}
+                </span>
+              </div>
+            </a>
+            
+            <a 
+              href="https://www.yelp.com/biz/ezfixable-woodland-hills"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-card bg-white/70 backdrop-blur-md px-8 py-4 rounded-2xl border border-gray-200 hover:bg-white/90 hover:shadow-xl transition-all duration-300"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-2xl">⭐⭐⭐⭐⭐</span>
+                <span className="font-semibold text-gray-800">
+                  {currentLang === 'en' && 'Yelp Reviews'}
+                  {currentLang === 'ru' && 'Отзывы Yelp'}
+                  {currentLang === 'es' && 'Reseñas Yelp'}
+                </span>
+              </div>
+            </a>
           </div>
         </div>
       </section>
@@ -355,6 +409,159 @@ function App() {
         </div>
       </section>
 
+      {/* Service Area - БЕЗ WOODLAND HILLS */}
+      <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              {currentLang === 'en' && (
+                <h2 className="text-5xl font-black text-gray-800 mb-8 gradient-text">
+                  Service Area
+                </h2>
+              )}
+              {currentLang === 'ru' && (
+                <h2 className="text-5xl font-black text-gray-800 mb-8 gradient-text">
+                  Область обслуживания
+                </h2>
+              )}
+              {currentLang === 'es' && (
+                <h2 className="text-5xl font-black text-gray-800 mb-8 gradient-text">
+                  Área de servicio
+                </h2>
+              )}
+              
+              {currentLang === 'en' && (
+                <p className="text-lg text-gray-700 mb-6">
+                  We cover the San Fernando Valley and nearby neighborhoods within 10–15 miles.
+                </p>
+              )}
+              {currentLang === 'ru' && (
+                <p className="text-lg text-gray-700 mb-6">
+                  Обслуживаем San Fernando Valley и районы в радиусе 10–15 миль.
+                </p>
+              )}
+              {currentLang === 'es' && (
+                <p className="text-lg text-gray-700 mb-6">
+                  Cubrimos San Fernando Valley y vecindarios a 10–15 millas.
+                </p>
+              )}
+              
+              <div className="grid grid-cols-2 gap-4">
+                <ul className="space-y-2 text-gray-600">
+                  <li>• San Fernando Valley</li>
+                  <li>• Calabasas</li>
+                  <li>• Tarzana</li>
+                  <li>• Reseda</li>
+                </ul>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• Van Nuys</li>
+                  <li>• Encino</li>
+                  <li>• Sherman Oaks</li>
+                  <li>• Canoga Park</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="glass-card bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-gray-200 text-center">
+              <div className="text-6xl mb-6">📍</div>
+              {currentLang === 'en' && (
+                <h3 className="text-3xl font-bold text-gray-800 mb-4">
+                  Local Service Area
+                </h3>
+              )}
+              {currentLang === 'ru' && (
+                <h3 className="text-3xl font-bold text-gray-800 mb-4">
+                  Местная зона обслуживания
+                </h3>
+              )}
+              {currentLang === 'es' && (
+                <h3 className="text-3xl font-bold text-gray-800 mb-4">
+                  Área de servicio local
+                </h3>
+              )}
+              
+              {currentLang === 'en' && (
+                <p className="text-sm text-gray-500 mt-2">
+                  San Fernando Valley + 10-15 mile radius
+                </p>
+              )}
+              {currentLang === 'ru' && (
+                <p className="text-sm text-gray-500 mt-2">
+                  San Fernando Valley + радиус 10-15 миль
+                </p>
+              )}
+              {currentLang === 'es' && (
+                <p className="text-sm text-gray-500 mt-2">
+                  San Fernando Valley + radio de 10-15 millas
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            {currentLang === 'en' && (
+              <h2 className="text-5xl font-black text-gray-800 mb-6 gradient-text">
+                Frequently Asked Questions
+              </h2>
+            )}
+            {currentLang === 'ru' && (
+              <h2 className="text-5xl font-black text-gray-800 mb-6 gradient-text">
+                Часто задаваемые вопросы
+              </h2>
+            )}
+            {currentLang === 'es' && (
+              <h2 className="text-5xl font-black text-gray-800 mb-6 gradient-text">
+                Preguntas frecuentes
+              </h2>
+            )}
+          </div>
+          
+          <div className="space-y-4">
+            {[
+              {
+                en: { q: "Do you offer same-day service?", a: "Yes, we offer same-day service when possible. Call us early in the day for the best chance of same-day availability." },
+                ru: { q: "Предоставляете ли вы услуги в день обращения?", a: "Да, мы предоставляем услуги в день обращения, когда это возможно. Звоните нам рано утром для лучшей возможности получить услугу в тот же день." },
+                es: { q: "¿Ofrecen servicio el mismo día?", a: "Sí, ofrecemos servicio el mismo día cuando es posible. Llámenos temprano en el día para tener la mejor oportunidad de disponibilidad el mismo día." }
+              },
+              {
+                en: { q: "What is your diagnostic fee?", a: "Our diagnostic fee is $60, which is applied to the repair cost if you proceed with the service." },
+                ru: { q: "Какова ваша плата за диагностику?", a: "Наша плата за диагностику составляет $60, которая засчитывается в стоимость ремонта, если вы продолжаете с обслуживанием." },
+                es: { q: "¿Cuál es su tarifa de diagnóstico?", a: "Nuestra tarifa de diagnóstico es de $60, que se aplica al costo de reparación si procede con el servicio." }
+              },
+              {
+                en: { q: "Do you provide warranties?", a: "Yes, we provide a 30-day warranty on labor and 90-day warranty on parts." },
+                ru: { q: "Предоставляете ли вы гарантии?", a: "Да, мы предоставляем 30-дневную гарантию на работу и 90-дневную гарантию на запчасти." },
+                es: { q: "¿Proporcionan garantías?", a: "Sí, proporcionamos una garantía de 30 días en mano de obra y 90 días en piezas." }
+              }
+            ].map((faq, index) => (
+              <div key={index} className="glass-card bg-white/80 backdrop-blur-md border border-gray-200 rounded-2xl overflow-hidden">
+                <button
+                  className="w-full p-6 text-left font-semibold text-gray-800 hover:bg-white/50 transition-all duration-300"
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                >
+                  <div className="flex justify-between items-center">
+                    <span className="text-lg">{faq[currentLang].q}</span>
+                    <span className={`transform transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`}>
+                      ▼
+                    </span>
+                  </div>
+                </button>
+                {openFaq === index && (
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-600">{faq[currentLang].a}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Quick Contact Form */}
       <section className="py-20 bg-gradient-to-b from-white to-orange-50">
         <div className="max-w-4xl mx-auto px-6">
@@ -421,10 +628,16 @@ function App() {
                   <option value="oven">
                     {currentLang === 'en' ? "Oven/Range" : currentLang === 'ru' ? "Духовка/Плита" : "Horno/Estufa"}
                   </option>
+                  <option value="dishwasher">
+                    {currentLang === 'en' ? "Dishwasher" : currentLang === 'ru' ? "Посудомойка" : "Lavavajillas"}
+                  </option>
+                  <option value="hvac">
+                    {currentLang === 'en' ? "HVAC" : currentLang === 'ru' ? "Кондиционер" : "HVAC"}
+                  </option>
                 </select>
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-4 rounded-xl font-bold hover:shadow-lg transition-all duration-300"
+                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-4 rounded-xl font-bold hover:shadow-lg transition-all duration-300 holographic-button"
                 >
                   {currentLang === 'en' ? "Request Service" : currentLang === 'ru' ? "Заказать ремонт" : "Solicitar servicio"}
                 </button>
@@ -467,6 +680,43 @@ function App() {
                   onChange={(e) => setFullForm({...fullForm, address: e.target.value})}
                   className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
                 />
+                <div className="grid grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    placeholder={currentLang === 'en' ? "ZIP Code" : currentLang === 'ru' ? "Индекс" : "Código postal"}
+                    value={fullForm.zip}
+                    onChange={(e) => setFullForm({...fullForm, zip: e.target.value})}
+                    className="p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  />
+                  <select
+                    value={fullForm.appliance}
+                    onChange={(e) => setFullForm({...fullForm, appliance: e.target.value})}
+                    className="p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >
+                    <option value="">
+                      {currentLang === 'en' ? "Appliance" : currentLang === 'ru' ? "Прибор" : "Electrodoméstico"}
+                    </option>
+                    <option value="washer">
+                      {currentLang === 'en' ? "Washer" : currentLang === 'ru' ? "Стиральная машина" : "Lavadora"}
+                    </option>
+                    <option value="dryer">
+                      {currentLang === 'en' ? "Dryer" : currentLang === 'ru' ? "Сушилка" : "Secadora"}
+                    </option>
+                    <option value="oven">
+                      {currentLang === 'en' ? "Oven/Range" : currentLang === 'ru' ? "Духовка/Плита" : "Horno/Estufa"}
+                    </option>
+                    <option value="dishwasher">
+                      {currentLang === 'en' ? "Dishwasher" : currentLang === 'ru' ? "Посудомойка" : "Lavavajillas"}
+                    </option>
+                  </select>
+                </div>
+                <input
+                  type="text"
+                  placeholder={currentLang === 'en' ? "Preferred Time" : currentLang === 'ru' ? "Удобное время" : "Hora preferida"}
+                  value={fullForm.time}
+                  onChange={(e) => setFullForm({...fullForm, time: e.target.value})}
+                  className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
                 <textarea
                   placeholder={currentLang === 'en' ? "Problem Description" : currentLang === 'ru' ? "Описание проблемы" : "Descripción del problema"}
                   value={fullForm.description}
@@ -476,7 +726,7 @@ function App() {
                 />
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-600 to-orange-500 text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all duration-300"
+                  className="w-full bg-gradient-to-r from-blue-600 to-orange-500 text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all duration-300 holographic-button"
                 >
                   {currentLang === 'en' ? "Send Detailed Request" : currentLang === 'ru' ? "Отправить подробный запрос" : "Enviar solicitud detallada"}
                 </button>
@@ -496,7 +746,7 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer - БЕЗ WOODLAND HILLS */}
       <footer className="bg-gradient-to-b from-gray-900 to-black text-white py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-12">
@@ -573,6 +823,8 @@ function App() {
                     <div>• Washer Repair</div>
                     <div>• Dryer Repair</div>
                     <div>• Oven & Range Repair</div>
+                    <div>• Dishwasher Repair</div>
+                    <div>• HVAC Services</div>
                   </>
                 )}
                 {currentLang === 'ru' && (
@@ -580,6 +832,8 @@ function App() {
                     <div>• Ремонт стиральных машин</div>
                     <div>• Ремонт сушилок</div>
                     <div>• Ремонт духовок и плит</div>
+                    <div>• Ремонт посудомоек</div>
+                    <div>• Услуги HVAC</div>
                   </>
                 )}
                 {currentLang === 'es' && (
@@ -587,6 +841,8 @@ function App() {
                     <div>• Reparación de lavadoras</div>
                     <div>• Reparación de secadoras</div>
                     <div>• Reparación de hornos y estufas</div>
+                    <div>• Reparación de lavavajillas</div>
+                    <div>• Servicios HVAC</div>
                   </>
                 )}
               </div>
